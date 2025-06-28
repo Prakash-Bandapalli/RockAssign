@@ -1,0 +1,5 @@
+# TypeScript cache
+*.tsbuildinfo
+
+# Vitest specific cache
+.vitest-cache

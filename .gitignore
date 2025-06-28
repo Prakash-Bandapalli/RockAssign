@@ -1,0 +1,28 @@
+# OS and Editor Files
+.DS_Store
+.vscode/
+.idea/
+*.swp
+*.log
+
+# Build Artifacts
+build/
+dist/
+dist-ssr
+
+# Dependencies
+node_modules/
+
+# Environment Variables
+.env
+.env.*
+!.env.example
+
+# Logs & Reports
+npm-debug.log*
+yarn-error.log
+report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
+
+# Other
+.eslintcache
+.node_repl_history

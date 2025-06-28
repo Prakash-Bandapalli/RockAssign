@@ -7,7 +7,7 @@ const canvasRoutes = require("./src/api/routes/canvasRoutes");
 const app = express();
 const PORT = process.env.PORT || 5001;
 
-const allowedOrigins = ["http://localhost:5173"];
+const allowedOrigins = [process.env.FRONTEND_URL];
 
 const corsOptions = {
   origin: function (origin, callback) {

@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 function AddTextForm({ onAddElement }) {
-  const [text, setText] = useState("Hello, World!");
+  const [text, setText] = useState("Canvas!");
   const [x, setX] = useState(50);
   const [y, setY] = useState(100);
   const [fontSize, setFontSize] = useState(48);

@@ -3,11 +3,13 @@ import { useState } from "react";
 function AddImageForm({ onAddElement }) {
   const [addMethod, setAddMethod] = useState("url");
 
-  const [url, setUrl] = useState("https://vitejs.dev/logo.svg");
-  const [urlPos, setUrlPos] = useState({ x: 150, y: 150 });
+  const [url, setUrl] = useState(
+    "https://rocketium.com/img/rocketium-logo-black.png"
+  );
+  const [urlPos, setUrlPos] = useState({ x: 150, y: 90 });
 
   const [file, setFile] = useState(null);
-  const [uploadPos, setUploadPos] = useState({ x: 150, y: 300 });
+  const [uploadPos, setUploadPos] = useState({ x: 40, y: 85 });
 
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);

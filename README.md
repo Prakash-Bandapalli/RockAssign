@@ -12,7 +12,7 @@ Canvas Builder is a full-stack web application that allows users to create simpl
 ### 🎥 Video Demo
 https://github.com/user-attachments/assets/1b9c8229-a73f-425d-8b76-c76fa9456db7
 
-*Watch the full demo to see Canvas Builder Pro in action!*
+*Watch the full demo to see Canvas Builder in action!*
 
 ## Key Features
 
@@ -41,18 +41,115 @@ https://github.com/user-attachments/assets/1b9c8229-a73f-425d-8b76-c76fa9456db7
 - **Tailwind CSS** for styling
 - **axios** for communicating with the backend API
 
-## API Endpoints
+## API Documentation
 
-The backend exposes the following RESTful endpoints:
+The backend provides a RESTful API to programmatically control the canvas. All examples below use curl and assume the backend is running on https://canvas-builder-api.onrender.com.
 
-| Method | Endpoint | Description |
-|--------|----------|-------------|
-| POST | `/api/canvas/initialize` | Creates a new canvas with given width and height |
-| POST | `/api/canvas/elements` | Adds an element (shape, text, or image) to the canvas |
-| GET | `/api/canvas/preview` | Returns a PNG image of the current canvas state |
-| POST | `/api/canvas/undo` | Undoes the last action and returns the new history state |
-| POST | `/api/canvas/redo` | Redoes the last undone action and returns the new history state |
-| GET | `/api/canvas/export/pdf` | Exports the canvas as a PDF. Accepts `?quality=[0.1-1.0]` query param |
+### POST /api/canvas/initialize
+
+Initializes a new canvas session, clearing any previous work. This must be called before any other action.
+
+**Request Body:** `application/json`
+
+**Example Request:**
+```bash
+curl -X POST https://canvas-builder-api.onrender.com/api/canvas/initialize \
+-H "Content-Type: application/json" \
+-d '{
+  "width": 800,
+  "height": 600
+}'
+```
+
+**Success Response (200 OK):**
+```json
+{
+  "message": "Canvas initialized with 800x600."
+}
+```
+
+### POST /api/canvas/elements
+
+Adds a new visual element to the canvas.
+
+**Example 1: Add a Rectangle**
+```json
+{
+  "type": "rectangle",
+  "x": 50,
+  "y": 50,
+  "width": 200,
+  "height": 100,
+  "color": "#FF5733"
+}
+```
+
+**Example 2: Add Text**
+```json
+{
+  "type": "text",
+  "text": "Hello from API!",
+  "x": 250,
+  "y": 80,
+  "fontSize": 32,
+  "fontFamily": "Arial",
+  "color": "#333333"
+}
+```
+
+**Example 3: Add an Image from a URL**
+```json
+{
+  "type": "image_url",
+  "url": "https://nodejs.org/static/images/logo-hexagon.png",
+  "x": 300,
+  "y": 200
+}
+```
+
+**Example 4: Upload an Image File**
+Supports direct file upload using multipart/form-data with `type=image_upload` and the image file.
+
+**Success Response (200 OK):**
+```json
+{
+  "message": "Element of type '...' added successfully."
+}
+```
+
+### GET /api/canvas/preview
+
+Returns a snapshot of the current canvas state as a PNG image.
+
+### POST /api/canvas/undo
+
+Reverts the canvas to its state before the last action.
+
+**Success Response (200 OK):**
+```json
+{
+  "message": "Undo successful.",
+  "canUndo": true,
+  "canRedo": true
+}
+```
+
+### POST /api/canvas/redo
+
+Re-applies the last undone action.
+
+**Success Response (200 OK):**
+```json
+{
+  "message": "Redo successful.",
+  "canUndo": true,
+  "canRedo": false
+}
+```
+
+### GET /api/canvas/export/pdf
+
+Generates a PDF file of the final canvas and triggers a download. Accepts optional `?quality=[0.1-1.0]` query parameter for compression.
 
 ## Getting Started
 

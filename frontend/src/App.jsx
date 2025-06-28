@@ -3,8 +3,8 @@ import ConfigPanel from "./components/panels/ConfigPanel";
 import CanvasPreview from "./components/canvas/CanvasPreview";
 import * as api from "./api/canvasApi";
 import AddElementPanel from "./components/panels/AddElementPanel";
-import HeaderActions from "./components/header/HeaderActions";
-import ExportButton from "./components/header/ExportButton";
+import HeaderActions from "./components/topheader/HeaderActions";
+import ExportButton from "./components/topheader/ExportButton";
 
 function App() {
   const [isCanvasInitialized, setIsCanvasInitialized] = useState(false);

@@ -1,4 +1,4 @@
-# Canvas Builder ( Assignment )
+# Canvas Builder 
 
 Canvas Builder is a full-stack web application that allows users to create simple graphic designs on a dynamic canvas and export them as high-quality, downloadable PDF files. The project features a Node.js/Express backend API that handles all image manipulation and a modern React/Vite frontend for a seamless user experience.
 
